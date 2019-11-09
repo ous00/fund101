@@ -1,0 +1,74 @@
+{% extends 'showme/base.html' %}
+{% load mathfilters %}
+{% block content %}
+
+<div class="container" id="featured-project">
+    <h1 id="featured-title" class="title is-4">Featured</h1>
+    <hr>
+    <div class="tile is-ancestor">
+        <div class="tile is-vertical">
+            <div class="tile">
+                <div class="tile is-parent">
+                    <div class="container">
+                        <figure class="image is-16by9">
+                            <img src="{{featured.image_top_name}}">
+                        </figure>
+                    </div>
+                </div>
+                <div class="tile is-parent is-vertical">
+                    <article class="tile is-child">
+                            <p class="title">{{featured.name}}</p>
+                            <p class="subtitle">Something really cool</p>
+                    </article>
+                    <div class="tile is-child has-text-centered">
+                        
+                        <table class="table is-fullwidth">
+                            <tbody>
+                                <tr>
+                                    <td>Rate of Return</td>
+                                    <td class="has-text-right">%{{featured.rate_of_return|mul:100}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Holding Period</td>
+                                    <td class="has-text-right">{{featured.tenure}} mo</td>
+                                </tr>
+                                <tr>
+                                    <td>Minimum Investment</td>
+                                    <td class="has-text-right">${{featured.minimum_investment}}</td>
+                                </tr>
+                                <tr class="">
+                                    <td class="">Asset Profile</td>
+                                    <td class="has-text-right">
+                                        <div class="project-financials">
+                                            {{featured.financials}}
+                                            <i class="fas fa-text-circle" data-tooltip="Tooltip Text"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="button is-primary is-fullwidth">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="current-projects">
+    <h1 class="title is-4">Current Projects</h1>
+    <hr>
+    {% for subset in all_projects %}    
+        <div class="columns is-1">
+        {% for project in subset %}
+            <div class='column'>
+            {% block porject-card %}
+                {% include 'showme/project-card.html' %}
+            {% endblock %}
+            </div>
+        {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+.project-card .card-content {
+    font-size: 15px;
+}
+
+div.project-financials {
+    width: 200px;
+    height: 50px;
+    overflow: auto;
+}
+
+#featured-project h1 {
+    margin-bottom: 2px;
+}
+
+#current-projects h1 {
+    margin-top: 1em;
+    margin-bottom: 2px;
+}
+
+hr {
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 3px solid rgb(86, 93, 100);
+  }

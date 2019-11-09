@@ -1,0 +1,37 @@
+{% load static %}
+{% load mathfilters %}
+<div class="card project-card">
+    <div class="card-header has-background-light">
+        <p class="card-header-title has-text-centered">{{ project.name }}</p>
+    </div>
+    <div class="card-image">
+        <figure class="image is-16by9">
+            <img src="{{project.image_top_name}}">
+        </figure>
+    </div>
+    <div class="card-content">
+        <table class="table is-fullwidth">
+            <tbody>
+                <tr><td>Rate of Return</td><td class="has-text-right">%{{project.rate_of_return|mul:100}}</td></tr>
+                <tr><td>Holding Period</td><td class="has-text-right">{{project.tenure}} mo</td></tr>
+                <tr><td>Minimum Investment</td><td class="has-text-right">${{project.minimum_investment}}</td></tr>
+                <tr class="">
+                    <td class="">Asset Profile</td>
+                    <td class="has-text-right">
+                        <div class="project-financials">
+                        {{project.financials}} 
+                        <i class="fas fa-text-circle" data-tooltip="Tooltip Text"></i>
+                        </div> 
+                    </td>                                   
+                </tr>
+            </tbody>
+        </table>
+        <!-- <progress class="progress" value="{{project.committed_amount}}" max="{{project.total_amount}}"></progress> -->
+        <button class="button is-primary">View Details</button>
+    </div>
+    <div class="card-footer">
+        <div class="card-footer-item"><progress class="progress" value="{{project.committed_amount}}" max="{{project.total_amount}}"></progress></div>
+        <!-- <a class="button is-light is-small card-footer-item">View Details</a>  -->
+        <!-- <div class="card-footer-item"></div> -->
+    </div>
+</div>
