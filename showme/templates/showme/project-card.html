@@ -12,7 +12,7 @@
     <div class="card-content">
         <table class="table is-fullwidth">
             <tbody>
-                <tr><td>Rate of Return</td><td class="has-text-right">%{{project.rate_of_return|mul:100}}</td></tr>
+                <tr><td>Rate of Return</td><td class="has-text-right">{{project.rate_of_return|mul:100}} %</td></tr>
                 <tr><td>Holding Period</td><td class="has-text-right">{{project.tenure}} mo</td></tr>
                 <tr><td>Minimum Investment</td><td class="has-text-right">${{project.minimum_investment}}</td></tr>
                 <tr class="">

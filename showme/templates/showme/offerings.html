@@ -18,7 +18,7 @@
                 <div class="tile is-parent is-vertical">
                     <article class="tile is-child">
                             <p class="title">{{featured.name}}</p>
-                            <p class="subtitle">Something really cool</p>
+                            <p class="subtitle">Something really cool!</p>
                     </article>
                     <div class="tile is-child has-text-centered">
                         
@@ -26,7 +26,7 @@
                             <tbody>
                                 <tr>
                                     <td>Rate of Return</td>
-                                    <td class="has-text-right">%{{featured.rate_of_return|mul:100}}</td>
+                                    <td class="has-text-right">{{featured.rate_of_return|mul:100}} %</td>
                                 </tr>
                                 <tr>
                                     <td>Holding Period</td>
@@ -62,13 +62,14 @@
         <div class="columns is-1">
         {% for project in subset %}
             <div class='column'>
-            {% block porject-card %}
-                {% include 'showme/project-card.html' %}
-            {% endblock %}
+            {% if project %}
+                {% block porject-card %}
+                    {% include 'showme/project-card.html' %}
+                {% endblock %}
+            {% endif %}
             </div>
         {% endfor %}
         </div>
     {% endfor %}
 </div>
-
 {% endblock %}

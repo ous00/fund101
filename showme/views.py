@@ -1,3 +1,4 @@
+import itertools
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404,  render
 from django.urls import reverse
@@ -15,15 +16,22 @@ def home_page(request):
 
 def offerings(request):
     projects = Project.objects.order_by('-start_date')
-    featured = projects[0]
+    featured = projects[len(projects)-1]
 
     def partition(els):
+        # make up for 3 
+        els = list(els)
+        els.extend([None] * (3 - len(els) % 3))
+        print(els)
         for i in range(0, len(els), 3):
             yield els[i: i+3] 
 
     user_name = request.user.username if request.user.is_authenticated else None
+
+    partitioned = partition(projects)
+   
     return render(request, 'showme/offerings.html', {
-        'all_projects': partition(projects),
+        'all_projects': partitioned,
         'featured': featured,
         'user_name': user_name
         }) 
