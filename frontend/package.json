@@ -11,6 +11,6 @@
   "dependencies": {
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "webpack": "^4.41.2"
+    "webpack": "^5.75.0"
   }
 }
